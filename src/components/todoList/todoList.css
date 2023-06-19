@@ -1,0 +1,19 @@
+.listButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.pageButton{
+    padding: 10px 20px;
+    font-size: 24px;
+    border: 2px solid gray;
+    cursor: pointer;
+}
+.pageButtonActive{
+    padding: 10px 20px;
+    font-size: 24px;
+    border: 2px solid green;
+    cursor: pointer;
+
+}

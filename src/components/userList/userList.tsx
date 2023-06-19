@@ -3,8 +3,6 @@ import {useEffect} from "react";
 import {fetchUsers} from "../../store/actions-creators/user";
 import {useActions} from "../../hooks/useActions";
 
-
-
 const UserList = () => {
     const {users, error, loading} = useTypedSelector(state => state.user);
     const {fetchUsers} = useActions();

@@ -10,6 +10,7 @@ export const fetchTodos = (page = 1, limit = 10) => {
                 params: { _limit: limit, _page: page}
             });
             dispatch({type: TodoActionTypes.FETCH_TODO_SUCCESS, payload: response.data})
+            dispatch({type:TodoActionTypes.SET_TODO_COUNT, payload: Math.ceil(response.headers["x-total-count"] / limit)})
         }
         catch (e){
             const error = e as Error;

@@ -6,6 +6,7 @@ const initialState: TodoState = {
     error: null,
     page: 1,
     limit: 10,
+    totalCount: 1
 }
 
 export const todoReducer = (state = initialState, action:TodoActions): TodoState => {
@@ -17,7 +18,9 @@ export const todoReducer = (state = initialState, action:TodoActions): TodoState
         case TodoActionTypes.FETCH_TODO_ERROR:
             return {...state, loading:false, todos: [], error:action.payload};
         case TodoActionTypes.SET_TODO_PAGE:
-            return {...state, page: action.payload}
+            return {...state, page: action.payload};
+        case TodoActionTypes.SET_TODO_COUNT:
+            return {...state, totalCount: action.payload}
         default:
             return state
     }

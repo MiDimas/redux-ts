@@ -4,11 +4,11 @@ import {useEffect} from "react";
 import './todoList.css';
 
 const TodoList = () => {
-    const {todos, loading, error, page, limit} = useTypedSelector(state => state.todo)
+    const {todos, loading, error, page, limit, totalCount} = useTypedSelector(state => state.todo)
     const {fetchTodos, setPage} = useActions();
-    const pages = [1, 2, 3, 4, 5];
     useEffect(() => {
         fetchTodos(page, limit);
+        console.log(totalCount)
     }, [page])
     if(loading){
         return <h1>LOADING...</h1>
@@ -16,6 +16,7 @@ const TodoList = () => {
     if(error){
         return <h1>{error}</h1>
     }
+    const pages = [...Array(totalCount)].map((_, i) => i + 1);
     return (
         <div>
             <div>

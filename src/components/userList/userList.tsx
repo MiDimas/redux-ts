@@ -1,17 +1,16 @@
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {useEffect} from "react";
 import {fetchUsers} from "../../store/actions-creators/user";
-import {ThunkDispatch} from "redux-thunk";
-import {UserActionTypes} from "../../types/users";
+import {useActions} from "../../hooks/useActions";
+
 
 
 const UserList = () => {
     const {users, error, loading} = useTypedSelector(state => state.user);
-    const dispatch = useAppDispatch();
+    const {fetchUsers} = useActions();
 
     useEffect(() =>{
-            dispatch(fetchUsers());
+            fetchUsers();
         }
     , []);
 

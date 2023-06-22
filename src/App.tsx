@@ -4,7 +4,7 @@ import UserList from "./components/userList/userList";
 import TodoList from "./components/todoList/todoList";
 import {setupStore} from "./store-toolkit/store";
 import {Provider} from "react-redux";
-import CounterTool from "./components-toolkit/CounterTool";
+import UsersTool from "./components-toolkit/UsersTool";
 
 const storeTool  = setupStore();
 
@@ -15,7 +15,7 @@ function App() {
             <hr/>
             <TodoList />
             <Provider store={storeTool}>
-                <CounterTool />
+                <UsersTool />
             </Provider>
         </div>
     );

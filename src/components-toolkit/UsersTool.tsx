@@ -8,7 +8,7 @@ const UsersTool = () => {
     const {users, error, isLoading} = useAppSelector(state => state.user);
 
     useEffect(() => {
-        dispatch(fetchUsers)
+        dispatch(fetchUsers())
     }, [])
     return (
         <div>

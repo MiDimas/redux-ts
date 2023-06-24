@@ -5,6 +5,7 @@ import TodoList from "./components/todoList/todoList";
 import {setupStore} from "./store-toolkit/store";
 import {Provider} from "react-redux";
 import UsersTool from "./components-toolkit/UsersTool";
+import PostsList from "./components/postsList/PostsList";
 
 const storeTool  = setupStore();
 
@@ -16,6 +17,7 @@ function App() {
             <TodoList />
             <Provider store={storeTool}>
                 <UsersTool />
+                <PostsList />
             </Provider>
         </div>
     );

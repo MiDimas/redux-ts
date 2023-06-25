@@ -1,11 +1,14 @@
 import {postAPI} from "../../services/PostService";
+import PostItem from "../postItem/PostItem";
 
 const PostsList = () => {
-    const {data: posts} = postAPI.useFetchAllPostsQuery(5);
+    const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(10);
     return (
         <div>
+            {isLoading && <h1>Идет загрузка...</h1>}
+            {error && <h1>Произошла ошибка загрузки</h1>}
             {posts && posts.map(value => (
-                <div key={value.id}> {value.id}. {value.title}</div>
+                <PostItem key={value.id} post={value}/>
             ))}
         </div>
     );

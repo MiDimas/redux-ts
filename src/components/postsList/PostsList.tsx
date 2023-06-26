@@ -2,7 +2,7 @@ import {postAPI} from "../../services/PostService";
 import PostItem from "../postItem/PostItem";
 
 const PostsList = () => {
-    const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(10);
+    const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(5);
     return (
         <div>
             {isLoading && <h1>Идет загрузка...</h1>}

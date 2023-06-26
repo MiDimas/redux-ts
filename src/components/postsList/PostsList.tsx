@@ -1,8 +1,16 @@
 import {postAPI} from "../../services/PostService";
 import PostItem from "../postItem/PostItem";
+import {IPost} from "../../types-toolkit/IPost";
 
 const PostsList = () => {
-    const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(5);
+    const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(50);
+    const [createPost, {}] = postAPI.useCreatePostMutation();
+
+    const handleClick = async () => {
+        const title = prompt("Введите имя поста");
+        await createPost({title, body: title} as IPost)
+    }
+
     return (
         <div>
             {isLoading && <h1>Идет загрузка...</h1>}
@@ -10,6 +18,7 @@ const PostsList = () => {
             {posts && posts.map(value => (
                 <PostItem key={value.id} post={value}/>
             ))}
+            <button onClick={handleClick}>Добавить пост</button>
         </div>
     );
 };

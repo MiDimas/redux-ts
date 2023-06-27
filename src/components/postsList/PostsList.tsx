@@ -5,6 +5,8 @@ import {IPost} from "../../types-toolkit/IPost";
 const PostsList = () => {
     const {data: posts, isLoading, error} = postAPI.useFetchAllPostsQuery(50);
     const [createPost, {}] = postAPI.useCreatePostMutation();
+    const [removePost, {}] = postAPI.useRemovePostMutation();
+    const [updatePost, {}] = postAPI.useUpdatePostMutation();
 
     const handleClick = async () => {
         const title = prompt("Введите имя поста");
@@ -16,7 +18,7 @@ const PostsList = () => {
             {isLoading && <h1>Идет загрузка...</h1>}
             {error && <h1>Произошла ошибка загрузки</h1>}
             {posts && posts.map(value => (
-                <PostItem key={value.id} post={value}/>
+                <PostItem key={value.id} removePost={removePost} updatePost={updatePost} post={value}/>
             ))}
             <button onClick={handleClick}>Добавить пост</button>
         </div>
